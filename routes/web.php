@@ -33,6 +33,15 @@ Route::get('/blog/search', function () {
 Route::get('/blog/single_post', function () {
     return view('vendor/binshopsblog/single_post');
 });
+
+Route::get('/blog_admin/setup', function () {
+    return view('vendor/binshopsblog/binshopsblog_admin/setup/setup');
+});
+
+Route::get('/blog_admin', function () {
+    return view('vendor/binshopsblog/binshopsblog_admin/index');
+})->name('binshopsblog.admin.index');
+
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
