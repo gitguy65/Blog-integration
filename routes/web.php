@@ -2,6 +2,9 @@
 
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
+use BinshopsBlog\Controllers\BinshopsReaderController;
+// use App\Http\Middleware\SetBlogLocale;
+use Illuminate\Http\Request;
 
 /*
 |--------------------------------------------------------------------------
@@ -18,7 +21,29 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::redirect('/blog', '/en/blog');
+// Route::get('blog', function(Request $request) {
+//     return app(BinshopsReaderController::class)->index('en', $request, null);
+// });
+Route::get('blog', function(Request $request) {
+    $locale = 'en'; 
+    return app(BinshopsReaderController::class)->index($locale, $request, null);
+});
+
+
+Route::get('blog/category', function(Request $request) {
+    return app(BinshopsReaderController::class)->view_category($request);
+});
+
+// Route::get('blog/search', [BinshopsReaderController::class, 'search']);  
+// Route::get('blog/category', [BinshopsReaderController::class, 'view_category']);  
+// Route::get('blog/Post', [BinshopsReaderController::class, 'viewSinglePost']);  
+
+// Route::get('blog/search', function(Request $request) {
+//     return app(BinshopsReaderController::class)->search( Request $request);
+// });
+// Route::get('blog/post', function(Request $request) {
+//     return app(BinshopsReaderController::class)->index('en', $request, null);
+// });
 
 Auth::routes();
 
