@@ -38,9 +38,9 @@ Route::get('/blog_admin/setup', function () {
     return view('vendor/binshopsblog/binshopsblog_admin/setup/setup');
 });
 
-Route::get('/blog_admin', function () {
-    return view('vendor/binshopsblog/binshopsblog_admin/index');
-})->name('binshopsblog.admin.index');
+// Route::get('/blog_admin', function () {
+//     return view('vendor/binshopsblog/binshopsblog_admin/index');
+// })->name('binshopsblog.admin.index');
 
 Auth::routes();
 
