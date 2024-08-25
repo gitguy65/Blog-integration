@@ -18,29 +18,7 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/blog', function () {
-    return view('vendor/binshopsblog/index');
-});
-
-Route::get('/blog/saved_comment', function () {
-    return view('vendor/binshopsblog/saved_comment');
-});
-
-Route::get('/blog/search', function () {
-    return view('vendor/binshopsblog/search');
-});
-
-Route::get('/blog/single_post', function () {
-    return view('vendor/binshopsblog/single_post');
-});
-
-Route::get('/blog_admin/setup', function () {
-    return view('vendor/binshopsblog/binshopsblog_admin/setup/setup');
-});
-
-// Route::get('/blog_admin', function () {
-//     return view('vendor/binshopsblog/binshopsblog_admin/index');
-// })->name('binshopsblog.admin.index');
+Route::redirect('/blog', '/en/blog');
 
 Auth::routes();
 
