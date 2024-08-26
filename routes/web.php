@@ -21,29 +21,25 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-// Route::get('blog', function(Request $request) {
-//     return app(BinshopsReaderController::class)->index('en', $request, null);
-// });
 Route::get('blog', function(Request $request) {
-    $locale = 'en'; 
-    return app(BinshopsReaderController::class)->index($locale, $request, null);
+    $request->merge(['locale' => 'en']);
+    return app(BinshopsReaderController::class)->index('en', $request, null);
 });
 
-
 Route::get('blog/category', function(Request $request) {
+    $request->merge(['locale' => 'en']);
     return app(BinshopsReaderController::class)->view_category($request);
 });
 
-// Route::get('blog/search', [BinshopsReaderController::class, 'search']);  
-// Route::get('blog/category', [BinshopsReaderController::class, 'view_category']);  
-// Route::get('blog/Post', [BinshopsReaderController::class, 'viewSinglePost']);  
+Route::get('blog/search', function(Request $request) {
+    $request->merge(['locale' => 'en']);
+    return app(BinshopsReaderController::class)->search($request);
+});
 
-// Route::get('blog/search', function(Request $request) {
-//     return app(BinshopsReaderController::class)->search( Request $request);
-// });
-// Route::get('blog/post', function(Request $request) {
-//     return app(BinshopsReaderController::class)->index('en', $request, null);
-// });
+Route::get('blog/post', function(Request $request) {
+    $request->merge(['locale' => 'en']);
+    return app(BinshopsReaderController::class)->viewSinglePost($request);
+});  
 
 Auth::routes();
 
