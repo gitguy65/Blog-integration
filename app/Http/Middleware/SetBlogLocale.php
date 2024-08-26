@@ -20,10 +20,9 @@ class SetBlogLocale
     public function handle(Request $request, Closure $next)
     {
         // $locale = $request->route('locale', 'en');
-        // app()->setLocale($locale);
-        // $request->merge(['locale' => $locale]);
-
-        app()->setLocale('en');
+        $locale = $request->route('locale') ?? 'en';
+        app()->setLocale($locale);
+        $request->merge(['locale' => $locale]);
         return $next($request);
     }
      

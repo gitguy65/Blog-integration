@@ -3,7 +3,7 @@
 
     @if($post_translations)
         <div class='search-form-outer mb-3'>
-            <form method='get' action='{{route("binshopsblog.admin.searchblog", app('request')->get('locale'))}}' class='text-center'>
+            <form method='get' action='{{route("binshopsblog.admin.searchblog", app('request')->get('locale','en'))}}' class='text-center'>
                 <input style="display: inline-block; width: 50%" type='text' name='s' placeholder='Search...' class='form-control' value='{{\Request::get("s")}}'>
                 <input style="display: inline-block" type='submit' value='Search' class='btn btn-primary m-2'>
             </form>
@@ -19,7 +19,7 @@
 
         <div class="card m-4" style="">
             <div class="card-body">
-                <h5 class='card-title'><a class="a-link-cart-color" href='{{$post->url(app('request')->get('locale'))}}'>{{$post->title}}</a></h5>
+                <h5 class='card-title'><a class="a-link-cart-color" href='{{$post->url(app('request')->get('locale', 'en'))}}'>{{$post->title}}</a></h5>
                 <h5 class='card-subtitle mb-2 text-muted'>{{$post->subtitle}}</h5>
                 <p class="card-text">{{$post->html}}</p>
 
@@ -85,9 +85,10 @@
                 @endif
 
 
-                <a href="{{$post->url(app('request')->get('locale'))}}" class="card-link btn btn-outline-secondary"><i class="fa fa-file-text-o"
-                                                                                                                       aria-hidden="true"></i>
-                    View Post</a>
+                <a href="{{ url('blog/' . $post->slug) }}" class="card-link btn btn-outline-secondary">
+                    <i class="fa fa-file-text-o" aria-hidden="true"></i>
+                    View Post
+                </a>
                 <a href="{{$post->edit_url()}}" class="card-link btn btn-primary">
                     <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
                     Edit Post</a>
